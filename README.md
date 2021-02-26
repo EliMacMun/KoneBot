@@ -1,14 +1,14 @@
 # slash-command-handler
 
-_Plantilla para tu bot de discord usando los **Slash Commands**._
+Plantilla para tu bot de discord usando los **Slash Commands**.
 
 ## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas, y subir el proyecto a heroku para mantenerlo activo._
+Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas, y subir el proyecto a heroku para mantenerlo activo.
 
-### Pre-requisitos 📋
+## Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+Que cosas necesitas para instalar el software
 
 * [GIT](https://git-scm.com/downloads)
 * [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
@@ -16,105 +16,113 @@ _Que cosas necesitas para instalar el software y como instalarlas_
   * Recomendado: [Visual Studio Code](https://code.visualstudio.com/download)
 * [Node.js](https://nodejs.org/es/download/)
 
-### Instalación 🔧
+## Instalación 🔧
 
-* Dirigete a la ruta en la **terminal** donde se clonará el proyecto
-```
+1. Dirigete a la ruta en la **terminal** donde se clonará el proyecto
+```console
 cd /proyectos
 ```
-* Clona el repositorio
-```
+2. Clona el repositorio
+```console
 git clone https://github.com/EliMacMun/slash-command-handler
 ```
-* Instala las dependencias nesesarias
-```
+3. Instala las dependencias nesesarias
+```console
 npm i
 ```
-* crea un archivo `.env` para agregar las variables de entorno nesesarias
-* Crea una aplicación de discord en la página de [DIscord Developers](https://discord.com/developers/applications/). Para hacerlo tienes que:
+4. crea un archivo `.env` para agregar las variables de entorno nesesarias
+5. Crea una aplicación de discord en la página de [DIscord Developers](https://discord.com/developers/applications/). Para hacerlo tienes que:
   * Presiona en **New Aplication**
-  ![Image_Example1](https://i.alexflipnote.dev/f9668b.png)
+  ![paso1](https://media.discordapp.net/attachments/814715456572751904/814715476927184906/unknown.png)
   * Escribe un nombre y presiona **Create**
-  ![Image_Example1](https://i.alexflipnote.dev/f9668b.png)
+  ![paso2](https://cdn.discordapp.com/attachments/814715456572751904/814715769304252467/unknown.png)
   * Selecciona la opción de **Bot** y despues presiona **Add Bot**
-  ![Image_Example1](https://i.alexflipnote.dev/f9668b.png)
-* Coloca el **Token** y el **ID del bot** en el arcchivo .env de la siguiente manera
-```
+  ![paso3](https://media.discordapp.net/attachments/814715456572751904/814716027865792532/unknown.png)
+6. Coloca el **Token** y el **ID del bot** en el arcchivo .env de la siguiente manera
+```env
 TOKEN_DISCORD=token_del_bot
 BOT_ID=id_del_bot
 ```
   * El Toquen se encuentra aquí
-  ![Image_Example1](https://i.alexflipnote.dev/f9668b.png)
+  ![discord1](https://media.discordapp.net/attachments/814715456572751904/814716379139801149/unknown.png)
   * El ID se encuentra aquí
-  ![Image_Example1](https://i.alexflipnote.dev/f9668b.png)
+  ![discord2](https://media.discordapp.net/attachments/814715456572751904/814716527793668116/unknown.png)
+7. Seleccione la opcion de OAuth2 y marque las casillas `Bot`, `aplications.commans` y `Administrator` y despues dele click en el botón de `Copy`
+![discord3](https://media.discordapp.net/attachments/814715456572751904/814737218743566366/unknown.png)
+8. Dirijase al link que copió, seleccióne un Servidor y presione `Continuar`
+![discord4](https://cdn.discordapp.com/attachments/814715456572751904/814738525349871626/unknown.png)
+9. Presione `Autorizar`
+![discord5](https://cdn.discordapp.com/attachments/814715456572751904/814738901515501568/unknown.png)
+0. tendrá que pasar por un captcha y el bot se agregará al servidor
+![discord6](https://cdn.discordapp.com/attachments/814715456572751904/814739315090915408/unknown.png)
+## Personalización 🛠️
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+Para agregar comandos solo debe agregar un arcchivo con la extención `.js` en la carpeta de `commands`
+El contenido debe tener la siguiente estructura
+```js
+module.exports = {
+    slash: {
+        // ApplicationCommandOption
+    },
+    run: async (client, interaction) => {
+        // Codigo a ejecutar
+    }
+}
+```
+ejemplo: 
+```js
+module.exports = {
+    slash: {
+        name: "ping",
+        description: "ping pong"
+    },
+    run: async (client, interaction) => {
+        interaction.channel.send("pong");
+    }
+}
+```
+Si requiere de más información puede revisar la documentación del modulo utilizado [discord-slash-commands-client](https://www.npmjs.com/package/discord-slash-commands-client) y la documentación oficial de [Discord API](https://discord.com/developers/docs/interactions/slash-commands)
 
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
+Para ejecutar pruebas mientras se desarrolla use el comando `npm run dev` el cual reiniciará la aplicación cada que se detecte un cambio.
+Si no quiere que se reinicie la aplicacion apenas detecte el cambio utilize el comando `npm run start`.
+Para parar el proceso solo basta con presionar `ctrl` + `c` en la terminal.
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
+Para desplegar el bot en [heroku](https://dashboard.heroku.com/) debe seguir los siguientes pasos (deberá registrarse previente)
 
-## Construido con 🛠️
+1. Cree una aplicación el su [dashboard](https://dashboard.heroku.com/apps) dando click en `New` y seleccionando `Create new app`
+![heroku1](https://cdn.discordapp.com/attachments/814715456572751904/814725371147976764/unknown.png)
+2. Ingrese un nombre para la aplicación y presione en `Create app`
+![heroku2](https://cdn.discordapp.com/attachments/814715456572751904/814726045789192192/unknown.png)
+3. Ahora en la terminal de su proyecto inicie sesión en heroku ejecutando
+```console
+heroku login
+```
+4. Seleccióne la aplicación ejecutando en la terminal
+```console
+heroku git:remote -a nombre-de-la-app-de-heroku
+```
+5. Prepare los archivos con el comando
+```console
+git add .
+```
+6. Haga commit de los cambios ejecutando
+```console
+git commit -am "first commit"
+```
+7. Despliegue la aplicación ejecutando
+```console
+git push heroku master
+```
+7. una vez terminado el proceso valla a la dashboard de heroku en la sección de `Resources` y edite los Dynos apagando el `web` y encendiendo el `worker` (de no aparecer el worker refresque la página)
+![heroku3](https://cdn.discordapp.com/attachments/814715456572751904/814729335214702672/unknown.png)
+8. Dirijase a la sección de `Settings` y presione en `Reveal Config Vars`
+![heroku4](https://cdn.discordapp.com/attachments/814715456572751904/814729951117967360/unknown.png)
+9. Ingrese las variables de entorno que agregó en el archivo `.env` y presione `Add`
+![heroku5](https://cdn.discordapp.com/attachments/814715456572751904/814730415675801610/unknown.png)
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
-
-
-
----
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+Una vez terminado el bot estará activo y cada que se requiera utilizar se tendrá que repetir los pasos 5 - 7
+Recuerde que el archivo `.env` no se deberá de subir o compartir
