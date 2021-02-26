@@ -151,5 +151,5 @@ git push heroku master
 
 ![heroku5](https://cdn.discordapp.com/attachments/814715456572751904/814730415675801610/unknown.png)
 
-Una vez terminado el bot estará activo y cada que se requiera utilizar se tendrá que repetir los pasos 5 - 7
+Una vez terminado el bot estará activo y cada que se requiera acctualizar se tendrá que repetir los pasos 5 - 7
 Recuerde que el archivo `.env` no se deberá de subir o compartir
