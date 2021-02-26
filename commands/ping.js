@@ -1,31 +1,7 @@
 module.exports = {
     slash: {
         name: "ping",
-        description: "ping pong",
-        options: [
-            {
-                name: "opt1",
-                description: "description for this option",
-                type: 	3, // Type for this option. for a list of types see https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoptiontype
-                default: false,
-                required: true,
-                choices: [
-                    {
-                        name: "time",
-                        value: "value of this choice that will be returned when command is used."
-                    },
-                    {
-                        name: "etc",
-                        value: "value of this other choice that will be returned when command is used."
-                    }
-                ]
-            },
-            {
-                name: "opt2",
-                description: "description for this other option",
-                type: 3,
-            }
-        ]
+        description: "ping pong"
     },
     run: async (client, interaction) => {
         try {

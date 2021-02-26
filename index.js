@@ -8,7 +8,7 @@ const client = new Client({
     },
 });
 client.login(process.env.TOKEN_DISCORD);
-client.interactions = new interactions.Client(process.env.TOKEN_DISCORD, 'id-bot');
+client.interactions = new interactions.Client(process.env.TOKEN_DISCORD, '772695649778139146');
 
 client.commands = new Collection();
 
@@ -28,15 +28,28 @@ client.on("ready", () => {
             console.log(response.name+' created')
         })
         .catch((error) => {
-            console.log("Error")
-            console.error(error.response.data.errors.options['0'])
+            console.error("Error")
+            if (error.response.data.errors.options) {
+                for (const option in error.response.data.errors.options) {
+                    console.log('Option ', option, ': ' ,error.response.data.errors.options[option].name)
+                }
+            } else if (error.response.data.errors.name){
+                console.error(error.response.data.errors.name)
+            } else {
+                console.error(error.response.data.errors)
+            }
         });
     })
 });
 
-client.on("interactionCreate", (interaction) => {
-    const cmd = await client.commands.get(command);
+client.on("interactionCreate", async (interaction) => {
+    console.log(interaction)
+    const cmd = await client.commands.get(interaction.name);
     if (cmd) {
         cmd.run(client, interaction);
     }
 });
+
+client.on('message', async (message) => {
+    console.log(message.content)
+})
