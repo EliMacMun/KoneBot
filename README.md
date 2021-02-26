@@ -53,7 +53,7 @@ BOT_ID=id_del_bot
 ![discord4](https://cdn.discordapp.com/attachments/814715456572751904/814738525349871626/unknown.png)
 9. Presione `Autorizar`
 ![discord5](https://cdn.discordapp.com/attachments/814715456572751904/814738901515501568/unknown.png)
-0. tendrá que pasar por un captcha y el bot se agregará al servidor
+10. tendrá que pasar por un captcha y el bot se agregará al servidor
 ![discord6](https://cdn.discordapp.com/attachments/814715456572751904/814739315090915408/unknown.png)
 ## Personalización 🛠️
 
