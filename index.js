@@ -7,8 +7,8 @@ const client = new Client({
         intents: 1923,
     },
 });
-client.login("NzcyNjk1NjQ5Nzc4MTM5MTQ2.X5-a5g.Q3NfQ7okuRORS0voeLnX2RjiBKY");
-client.interactions = new interactions.Client("NzcyNjk1NjQ5Nzc4MTM5MTQ2.X5-a5g.Q3NfQ7okuRORS0voeLnX2RjiBKY", '772695649778139146');
+client.login(process.env.TOKEN_DISCORD);
+client.interactions = new interactions.Client(process.env.TOKEN_DISCORD, 'id-bot');
 
 client.commands = new Collection();
 
