@@ -4,31 +4,32 @@ module.exports = {
         description: "ping pong",
         options: [
             {
-                name: "name of this option",
+                name: "opt1",
                 description: "description for this option",
-                type: 1, // Type for this option. for a list of types see https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoptiontype
-                default?: true,
-                required?: true,
-                choices?: [
+                type: 	3, // Type for this option. for a list of types see https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoptiontype
+                default: false,
+                required: true,
+                choices: [
                     {
-                        name: "string to prefill for this choice",
+                        name: "time",
                         value: "value of this choice that will be returned when command is used."
                     },
                     {
-                        name: "string to prefill for this other choice",
+                        name: "etc",
                         value: "value of this other choice that will be returned when command is used."
                     }
                 ]
             },
             {
-                name: "name of this other option",
+                name: "opt2",
                 description: "description for this other option",
-                type: 1,
+                type: 3,
             }
         ]
     },
     run: async (client, interaction) => {
         try {
+            console.log(interaction)
             interaction.channel.send("pong");
         } catch (error) {
             const CanalError = client.channels.cache.get('734497561485901906');
@@ -37,21 +38,3 @@ module.exports = {
         }
     }
 }
-
-
-
-
-options: [
-    {
-        name: "tag1",
-        description: "first tag",
-        type: 6,
-        required: true
-    },
-    {
-        name: "tag2",
-        description: "first tag",
-        type: 6,
-        required: true
-    }
-]

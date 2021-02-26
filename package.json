@@ -29,7 +29,7 @@
   "dependencies": {
     "cross-env": "^7.0.3",
     "discord-slash-commands-client": "^1.1.1",
-    "discord.js": "^12.5.1",
+    "discord.js": "git+https://github.com/MatteZ02/discord.js.git",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
